@@ -121,6 +121,9 @@
      wget
      neovim
      git
+     clang
+     clang-tools
+     fira-code-nerdfont
   ];
 
    

@@ -50,13 +50,29 @@
     homeDirectory = "/home/noname";
   };
 
+  # Config to clone some repos
+  home.file = {
+    ".config/nvim" = {
+      source = pkgs.fetchFromGitHub {
+        owner = "betoxxD";
+	repo = "lazyvim";
+	rev = "main";
+	sha256 = "sha256-R7aGMPdgtAjC+0pdsow3ATjK14m4esFH1mnbhigu/Yk=";
+      };
+    };
+  };
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userEmail = "betoxxdiosnava@gmail.com";
+    userName = "betoxxD";
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
